@@ -1,4 +1,4 @@
 
-public class PartialCooperator {
+public class PartialCooperator extends Organism{
 
 }
