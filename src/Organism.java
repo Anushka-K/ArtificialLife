@@ -1,6 +1,7 @@
 
 public class Organism {
-private int energy;
+public int energy;
+
 
   public Organism() {
     this.energy=0;
@@ -26,4 +27,21 @@ private int energy;
     Organism org = new Organism();
     return org;
   }
+  
+  double getCooperationProbability() {
+
+    double cooperation;
+
+    if (this.type.equals("cooperator"))
+      cooperation = 1;
+    else if (this.type.equals("partial cooperator"))
+      cooperation = 0.5;
+    else
+      cooperation = 0;
+
+    return cooperation;
+}
+  public void update() {
+    this.energy++;
+}
 }
