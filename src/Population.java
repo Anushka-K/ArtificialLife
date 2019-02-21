@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.lang.Integer;
 
 import java.util.ConcurrentModificationException;
+import java.util.Random;
 
 public class Population {
   
@@ -10,7 +11,7 @@ public class Population {
   
 
   public Population(Pair<String,Integer>[] counts) {
-  
+   this.list= new ArrayList<Organism>();
     for(int i=0; i< Integer.valueOf(counts[0].getRight()); i++) {
       Cooperator  c= new Cooperator();
      this.list.add(c);
@@ -37,8 +38,31 @@ public class Population {
       
       this.list.get(i).update();
       
+      double help= this.list.get(i).getCooperationProbability();
+      
+      long rgenseed = System.currentTimeMillis();
+      Random rand= new Random(rgenseed);
+      
+      if(help==0) {
+        return;
+      }else if(help==0.5){
+        if((rand.nextInt()%2)==0) {
+          return;
+        }}
+   
+      
+      for(int j=0; j<8; j++) {
+          int neighPos= rand.nextInt(this.list.size());
+          this.list.get(neighPos).incrementEnergy();
+      
+      }//for (give energy to neighbours)
+      
+      this.list.get(i).decrementEnergy();
+      
       if(this.list.get(i).getEnergy()>=10) {
-        babies.add(this.list.get(i).reproduce());
+        int replace= rand.nextInt(this.list.size());
+       this.list.set(replace, this.list.get(i).reproduce());
+        //babies.add(this.list.get(i).reproduce());
       }
       
     }
