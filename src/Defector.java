@@ -30,4 +30,6 @@ public class Defector extends Organism {
     return def;
 
   }
+
+  
 }
