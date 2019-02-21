@@ -12,6 +12,7 @@ public class Organism {
    */
   public Organism() {
     this.energy = 0;
+    this.type = "Organism";
   }
 
   /*
@@ -54,9 +55,9 @@ public class Organism {
 
     double cooperation;
 
-    if (this.type.equals("cooperator"))
+    if (this.type.equals("Cooperator"))
       cooperation = 1;
-    else if (this.type.equals("partial cooperator"))
+    else if (this.type.equals("PartialCooperator"))
       cooperation = 0.5;
     else
       cooperation = 0;
@@ -65,6 +66,6 @@ public class Organism {
   }
 
   boolean cooperates() {
-    return this.type.equals("cooperator") || this.type.equals("partial cooperator");
+    return this.type.equals("Cooperator") || this.type.equals("PartialCooperator");
   }
 }

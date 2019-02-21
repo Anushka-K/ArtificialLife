@@ -1,13 +1,14 @@
 
 public class PartialCooperator extends Organism {
-
+  
   public PartialCooperator() {
     super();
+    this.type = "PartialCooperator";
   }
 
   @Override
   public String getType() {
-    return "partial cooperator";
+    return this.type;
   }
 
   @Override

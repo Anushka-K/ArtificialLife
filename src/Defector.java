@@ -3,11 +3,12 @@ public class Defector extends Organism {
 
   public Defector() {
     super();
+    this.type = "Defector";
   }
 
   @Override
   public String getType() {
-    return "defector";
+    return this.type;
   }
 
   @Override

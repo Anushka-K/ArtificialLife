@@ -3,11 +3,12 @@ public class Cooperator extends Organism {
 
   public Cooperator() {
     super();
+    this.type = "Cooperator";
   }
 
   @Override
   public String getType() {
-    return "cooperator";
+    return this.type;
   }
 
   @Override
