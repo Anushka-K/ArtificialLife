@@ -1,17 +1,23 @@
 
 public class Defector extends Organism {
 
-  double cooperation;
-  
-  public Cooperator() {
-    this.cooperation = 0;
+  public Defector() {
+    super();
   }
-  
+
+  @Override
   public String getType() {
     return "defector";
   }
-  
+
+  @Override
   public boolean cooperates() {
-    return this.cooperation != 0;
+    return false;
+  }
+
+  @Override
+  double getCooperationProbability() {
+    double cooperation = 0;
+    return cooperation;
   }
 }

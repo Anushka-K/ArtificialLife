@@ -1,18 +1,24 @@
 
 public class PartialCooperator extends Organism {
 
-  double cooperation;
- 
   public PartialCooperator() {
-    this.cooperation = 0.5;
+    super();
   }
-  
+
+  @Override
   public String getType() {
     return "partial cooperator";
   }
-  
+
+  @Override
   public boolean cooperates() {
-    return this.cooperation != 0;
+    return true;
+  }
+
+  @Override
+  double getCooperationProbability() {
+    double cooperation = 0.5;
+    return cooperation;
   }
 }
 

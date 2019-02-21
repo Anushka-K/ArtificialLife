@@ -1,17 +1,23 @@
 
 public class Cooperator extends Organism {
 
-  double cooperation;
-  
   public Cooperator() {
-    this.cooperation = 1;
+    super();
   }
-  
+
+  @Override
   public String getType() {
     return "cooperator";
   }
-  
+
+  @Override
   public boolean cooperates() {
-    return this.cooperation != 0;
+    return true;
+  }
+
+  @Override
+  double getCooperationProbability() {
+    double cooperation = 1;
+    return cooperation;
   }
 }
