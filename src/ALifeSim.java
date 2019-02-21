@@ -26,10 +26,13 @@ public class ALifeSim {
     int coopNum= Integer.parseInt(args[1]);
     int defectNum= Integer.parseInt(args[2]);
     int partialNum= Integer.parseInt(args[3]);
-    new Population(map(coopNum, defectNum, partialNum));
+    Population thisWorld= new Population(map(coopNum, defectNum, partialNum));
+    
+    int iterations= Integer.parseInt(args[0]);
     
     
-    
+    //run iterations/
+    //print result
   }
 
 }
