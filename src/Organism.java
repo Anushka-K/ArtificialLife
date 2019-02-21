@@ -1,3 +1,4 @@
+import java.util.Random;
 
 public class Organism {
 
@@ -17,7 +18,27 @@ public String type;
    */
   public void update() {
     this.energy++;
-  }
+    double help= this.getCooperationProbability();
+    
+    long rgenseed = System.currentTimeMillis();
+    Random rand= new Random(rgenseed);
+    
+    if(help==0) {
+      return;
+    }else if(help==1) {
+      continue;
+    }else if(help==0.5){
+      if((rand.nextInt()%2)==0) {
+        return;
+      }else
+        continue;
+    }      
+    
+    for(int i=0; i<8; i++) {
+        int neighPos= rand.nextInt(Population.list.size());
+        Population.list.get(neighPos).incrementEnergy();
+    
+    }}
 
   public int getEnergy() {
     return this.energy;
@@ -32,10 +53,6 @@ public String type;
     if (this.energy >0)
       this.energy--;
   }
-
-
-
-  
 
 
   /*
@@ -74,8 +91,6 @@ public String type;
 
 }
   
-
-
   boolean cooperates() {
     return this.type.equals("Cooperator") || this.type.equals("PartialCooperator");
   }

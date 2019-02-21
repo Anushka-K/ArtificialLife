@@ -2,13 +2,13 @@ import java.util.ArrayList;
 
 public class Population {
   
-  ArrayList<Organism> list;
+  static ArrayList<Organism> list;
   int iteration;
   
 
   public Population(Pair<String,Integer>[] counts) {
    for(int j=0; j<counts.length;j++) {
-    for(int i=0; i< (int)counts[j].getRight(); i++) {
+    for(int i=0; i< Integer.parseInt(counts[j].getRight()); i++) {
      list.add(new Cooperator());
    }
    }
@@ -17,22 +17,22 @@ public class Population {
    
   }//constructor
   
-  public void update() {
-    for(int i=0; i< this.list.size();i++) {
+  public static void update() {
+    for(int i=0; i< list.size();i++) {
       list.get(i).update();
     }
     //check that update happened
     //check if they reproduce
   }
   
-  public Pair<String,Integer>[] getPopulationCounts(){
+  public static Pair<String,Integer>[] getPopulationCounts(){
     Pair<String,Integer>[] pop= (Pair<String,Integer>[])(new Pair[3]);
     
     int coopCount=0;
     int defCount=0;
     int partCount=0;
     
-    for(int i=0; i< this.list.size();i++) {
+    for(int i=0; i< list.size();i++) {
       Organism thisOne= list.get(i);
       if(thisOne instanceof Cooperator) {
         coopCount++;
@@ -49,10 +49,10 @@ public class Population {
     return pop;
   }
   
-  public double calculateCooperationMean() {
+  public static double calculateCooperationMean() {
     double average=0;
     int i=0;
-    for(; i< this.list.size();i++) {
+    for(; i< list.size();i++) {
       average+=list.get(i).getCooperationProbability();
     }
     average/=i;
