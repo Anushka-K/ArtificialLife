@@ -5,40 +5,40 @@ import java.util.ConcurrentModificationException;
 
 public class Population {
   
-  static ArrayList<Organism> list;
+   ArrayList<Organism> list;
   int iteration;
   
 
   public Population(Pair<String,Integer>[] counts) {
   
     for(int i=0; i< Integer.valueOf(counts[0].getRight()); i++) {
-      
-     list.add(new Cooperator());
+      Cooperator  c= new Cooperator();
+     this.list.add(c);
    }
     for(int i=0; i< Integer.valueOf(counts[1].getRight()); i++) {
       
-      list.add(new Defector());
+      this.list.add(new Defector());
     }
     
     for(int i=0; i< Integer.valueOf(counts[2].getRight()); i++) {
      
-     list.add(new PartialCooperator());
+     this.list.add(new PartialCooperator());
     }
     
     this.iteration=0;
       
   }//constructor
   
-  public static void update() throws Exception, ConcurrentModificationException{
+  public  void update() throws Exception, ConcurrentModificationException{
    ArrayList<Organism> babies=new ArrayList();
     
-    for(int i=0; i< list.size();i++) {
-      int popSize= list.size();
+    for(int i=0; i< this.list.size();i++) {
+      int popSize= this.list.size();
       
-      list.get(i).update();
+      this.list.get(i).update();
       
-      if(list.get(i).getEnergy()>=10) {
-        babies.add(list.get(i).reproduce());
+      if(this.list.get(i).getEnergy()>=10) {
+        babies.add(this.list.get(i).reproduce());
       }
       
     }
@@ -47,15 +47,15 @@ public class Population {
      list.addAll(babies);
   }
   
-  public static Pair<String,Integer>[] getPopulationCounts(){
+  public  Pair<String,Integer>[] getPopulationCounts(){
     Pair<String,Integer>[] pop= (Pair<String,Integer>[])(new Pair[3]);
     
     int coopCount=0;
     int defCount=0;
     int partCount=0;
     
-    for(int i=0; i< list.size();i++) {
-      Organism thisOne= list.get(i);
+    for(int i=0; i< this.list.size();i++) {
+      Organism thisOne= this.list.get(i);
       if(thisOne instanceof Cooperator) {
         coopCount++;
       }else if(thisOne instanceof Defector) {
@@ -71,11 +71,11 @@ public class Population {
     return pop;
   }
   
-  public static double calculateCooperationMean() {
+  public  double calculateCooperationMean() {
     double average=0;
     int i=0;
-    for(; i< list.size();i++) {
-      average+=list.get(i).getCooperationProbability();
+    for(; i< this.list.size();i++) {
+      average+=this.list.get(i).getCooperationProbability();
     }
     average/=i;
     return average;
