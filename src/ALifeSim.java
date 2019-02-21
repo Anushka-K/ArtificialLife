@@ -36,9 +36,9 @@ public class ALifeSim {
     int iterations= Integer.parseInt(args[0]);
     
     for(int i=0; i<iterations; i++) {
-      Population.update();
+      thisWorld.update();
        }
-    Pair<String,Integer>[] counts= Population.getPopulationCounts();
+    Pair<String,Integer>[] counts= thisWorld.getPopulationCounts();
     
     printReport(counts, iterations);
     
