@@ -1,4 +1,7 @@
 import java.util.ArrayList;
+import java.lang.Integer;
+
+import java.util.ConcurrentModificationException;
 
 public class Population {
   
@@ -7,22 +10,41 @@ public class Population {
   
 
   public Population(Pair<String,Integer>[] counts) {
-   for(int j=0; j<counts.length;j++) {
-    for(int i=0; i< Integer.parseInt(counts[j].getRight()); i++) {
+  
+    for(int i=0; i< Integer.valueOf(counts[0].getRight()); i++) {
+      
      list.add(new Cooperator());
    }
-   }
+    for(int i=0; i< Integer.valueOf(counts[1].getRight()); i++) {
+      
+      list.add(new Defector());
+    }
+    
+    for(int i=0; i< Integer.valueOf(counts[2].getRight()); i++) {
+     
+     list.add(new PartialCooperator());
+    }
+    
     this.iteration=0;
-   
-   
+      
   }//constructor
   
-  public static void update() {
+  public static void update() throws Exception, ConcurrentModificationException{
+   ArrayList<Organism> babies=new ArrayList();
+    
     for(int i=0; i< list.size();i++) {
+      int popSize= list.size();
+      
       list.get(i).update();
+      
+      if(list.get(i).getEnergy()>=10) {
+        babies.add(list.get(i).reproduce());
+      }
+      
     }
     //check that update happened
     //check if they reproduce
+     list.addAll(babies);
   }
   
   public static Pair<String,Integer>[] getPopulationCounts(){

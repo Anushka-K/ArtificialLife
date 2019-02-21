@@ -16,7 +16,7 @@ public String type;
   /*
    * update needs to do other things that I have not figured out yet
    */
-  public void update() {
+  public void update() throws Exception {
     this.energy++;
     double help= this.getCooperationProbability();
     
@@ -25,20 +25,20 @@ public String type;
     
     if(help==0) {
       return;
-    }else if(help==1) {
-      continue;
     }else if(help==0.5){
       if((rand.nextInt()%2)==0) {
         return;
-      }else
-        continue;
-    }      
+      }}
+ 
     
     for(int i=0; i<8; i++) {
         int neighPos= rand.nextInt(Population.list.size());
         Population.list.get(neighPos).incrementEnergy();
     
-    }}
+    }//for (give energy to neighbours)
+    
+    this.decrementEnergy();
+    }
 
   public int getEnergy() {
     return this.energy;

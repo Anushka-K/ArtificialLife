@@ -1,16 +1,21 @@
 import java.io.PrintWriter;
+import java.util.ConcurrentModificationException;
 
 public class ALifeSim {
-  /*
-   * public void printReport() { PrintWriter pen=new PrintWriter(System.out, true);
-   * 
-   * pen.println("After "+iterations+" ticks:"); pen.println("Cooperators ="+jsdfj);
-   * pen.println("Cooperators ="+jsdfj); pen.println("Cooperators ="+jsdfj); pen.println("");
-   * pen.println(""); pen.println("Mean Cooperation Probability = ");
-   * 
-   * 
-   * }
-   */
+
+  public static void printReport(Pair<String,Integer>[] counts, int iterations) {
+    PrintWriter pen = new PrintWriter(System.out, true);
+
+    pen.println("After " + iterations + " ticks:");
+    pen.println("Cooperators =" + counts[0].getRight());
+    pen.println("Defectors =" + counts[1].getRight());
+    pen.println("Partial Cooperators =" + counts[2].getRight());
+    pen.println("");
+    pen.println("");
+    pen.println("Mean Cooperation Probability = ");
+
+  }
+
   
   public static Pair<String,Integer>[] map(int collabNum, int defNum, int partialNum) {
     Pair<String,Integer>[] pop = (Pair<String,Integer>[]) (new Pair[3]);
@@ -19,7 +24,7 @@ public class ALifeSim {
     pop[2] = new Pair<String, Integer>("Partial-Cooperator", partialNum);
     return pop;
   }
-  public static void main(String args[]) {
+  public static void main(String args[]) throws ConcurrentModificationException, Exception {
     // java ALifeSim <#/iterations> <#/cooperators> <#/defectors> <#/partial cooperators>
 
     //the simulation runs
@@ -30,8 +35,14 @@ public class ALifeSim {
     
     int iterations= Integer.parseInt(args[0]);
     
+    for(int i=0; i<iterations; i++) {
+      Population.update();
+       }
+    Pair<String,Integer>[] counts= Population.getPopulationCounts();
     
-    //run iterations/
+    printReport(counts, iterations);
+    
+    
     //print result
   }
 
