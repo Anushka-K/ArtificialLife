@@ -1,8 +1,11 @@
+
+
 import java.util.ArrayList;
 import java.lang.Integer;
 
 import java.util.ConcurrentModificationException;
 import java.util.Random;
+import src.Cooperator;
 
 public class Population {
   
@@ -17,13 +20,13 @@ public class Population {
      this.list.add(c);
    }
     for(int i=0; i< Integer.valueOf(counts[1].getRight()); i++) {
-      
-      this.list.add(new Defector());
+      Defector  d= new Defector();
+      this.list.add(d);
     }
     
     for(int i=0; i< Integer.valueOf(counts[2].getRight()); i++) {
-     
-     this.list.add(new PartialCooperator());
+      PartialCooperator pc= new PartialCooperator();
+     this.list.add(pc);
     }
     
     this.iteration=0;
@@ -89,8 +92,8 @@ public class Population {
       }
     }
     pop[0]=new Pair<String, Integer>("Cooperator",coopCount);
-    pop[0]=new Pair<String, Integer>("Defector",defCount);
-    pop[0]=new Pair<String, Integer>("Partial Cooperator",partCount);
+    pop[1]=new Pair<String, Integer>("Defector",defCount);
+    pop[2]=new Pair<String, Integer>("Partial Cooperator",partCount);
     
     return pop;
   }

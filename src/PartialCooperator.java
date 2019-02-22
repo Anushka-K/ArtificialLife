@@ -1,4 +1,5 @@
 
+
 public class PartialCooperator extends Organism{
   
   public PartialCooperator() {
