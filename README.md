@@ -1,6 +1,6 @@
 # ArtificialLife
 
-This is a life stimulation, created in Java by Jacob Estabrook, Anushka Kulshreshtha. It tests the stimulation for a population of Cooperators, Defectors and Partial Cooperators, for a specified number of trials. These values are specified on the command-line. We do not run different seeds for random because our program design makes the seed from the current time stamp.
+This is a life stimulation, created in Java by Jacob Estabrook, Anushka Kulshreshtha, with help from Elise Bargman, Kedam Habte, Sam A. Rebelsky, Allie Rogers, stackOverflow for exception info https://stackoverflow.com/questions/218384/what-is-a-nullpointerexception-and-how-do-i-fix-it, relevant reading from CSC207.2019S and relevant Oracle javadocs. It tests the stimulation for a population of Cooperators, Defectors and Partial Cooperators, for a specified number of trials. These values are specified on the command-line. We do not run different seeds for random because our program design makes the seed from the current time stamp.
 
 TEST #1
 100 iterations, Population size 10,  1 Cooperator, 9 Defectors
